@@ -30,7 +30,12 @@ def Adj(v):
         if gr[v][i]!=0:
             adj.append(i)
     return adj
-
+def findMin(S):
+    min_v=math.inf
+    for i in range(9):
+        if board[i]<min_v and i not in S:
+            min_v=board[i]
+    return min_v
 def MST(u,S,Q):
     while len(Q)>0:
         print(u,S,Q,board)
@@ -41,18 +46,12 @@ def MST(u,S,Q):
                 board[v]=gr[u][v]
                 parent[v]=u
         # chọn vertex có w nối đến S nhỏ nhất
-        
-        next_u=board.index(min(board))
-        MST(next_u,S,Q)
+        min_v=findMin(S)
+        if min_v!=math.inf:
+            next_u=board.index(min_v)
+            MST(next_u,S,Q)
     
 MST(0,[],list(range(9)))
 
 print(board)
 print(parent)
-
-
-
-
-# Q=list(range(9))
-# Q.pop(Q.index(5))
-# print(Q)
