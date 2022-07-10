@@ -19,8 +19,9 @@ for i in range(9):
         if gr[i][j]!=0:
             gr[j][i]=gr[i][j]
 import math
-# board[v] = min{w(u,v)|u thuộc S và v thuộc Q}
+# board[v] = min{w(u,v)|u thuộc S và v thuộc Q}, có thể set board[0]=0 vì bắt đầu duyệt từ đỉnh 0
 board=[math.inf for i in range(9)]
+
 #parent
 parent=dict()
 # Cấu hình khởi tạo ban đầu: S rỗng, Q chứa all vertices
