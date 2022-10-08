@@ -1,6 +1,8 @@
 #https://chidokun.github.io/2021/09/dijkstra-algorithm/
 # Dijkstra: shortest path with no minus value
 
+
+
 gr=[[0 for i in range(9)] for i in range(9)]
 gr[0][3]=21
 gr[0][1]=25
@@ -20,13 +22,21 @@ for i in range(9):
         if gr[i][j]!=0:
             gr[j][i]=gr[i][j]
 
-for i in range(9):
-    print(gr[i])
+
 
 import math
 board=[math.inf for i in range(9)]
 board[0]=0
 done=[False for i in range(9)]
+
+def find_next_node(board,stack):
+    min=math.inf
+    index=0
+    for i in stack:
+        if board[i]<min:
+            min=board[i]
+            index=i
+    return stack.index(index)
 def Dij(v,stack):
     done[v]=True
     for i in range(9):
@@ -42,7 +52,7 @@ def Dij(v,stack):
     
     return board
 
-print(Dij(0,[0]))
+print(Dij(0,[]))
 
 
             
